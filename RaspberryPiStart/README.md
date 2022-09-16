@@ -2,7 +2,7 @@
 
 ## Install Raspberry PI OS 
 
-From: https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4
+Documentation: https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4
 
 Install the Raspberry Pi Imager on Windows:
 
