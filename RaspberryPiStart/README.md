@@ -35,29 +35,8 @@ It would have been nice if there was a command line interface for the Imager, bu
 
 # Black screen after reboot
 
-The raspberry did turn on and showed the user interface. It did not connect to the wifi and after a reboot it never completed the boot process. It just showed a black screen with a blinking cursor. :( 
+I have a Raspberry PI 3 Model B+ with a Raspberry Pi Touchscreen Display. 
 
-So I burned a new image on the MicroSD card and tried again.
+The raspberry did turn on and showed the user interface. It did not connect to the wifi and after a reboot it never completed the boot process but showed a black screen with a blinking cursor. :( 
 
-This time I connected to the wifi manually and tried to [update all software](https://www.raspberrypi.com/documentation/computers/os.html) before rebooting:
-```bash
-sudo apt update
-sudo apt full-upgrade
-reboot
-```
-
-Again the back screen with a blinking cursor :(
-
-In the boot sequence there is a point where an image is showing "Welcome to..." if I press F12 there, then it shows the boot log. Sometime if I do that, it succeeded the boot and the desktop appears. 
-
-Then I changed to: boot to console (instead of desktop):
-
-```bash
-sudo raspi-config
-```
-In the menu select "1. System Options", "S5 Boot / Auto Login" and "B2 Console Autologin".
-I also changed "1. System Options", "S7 Splash Screen" to "No".
-
-That seems to work every time. Tried to enable boot to desktop again and now it work now and then. I'm [not the only one having the problem](https://forums.raspberrypi.com/viewtopic.php?t=140183). Might be a power related problem. 
-
-That must be a problem for another day...
+It turnes out it is power issue. The screen and pi shares a 5V 2.5A power supply. If I use two power supplies - one for the screen and one for the pi then it starts every time. 
