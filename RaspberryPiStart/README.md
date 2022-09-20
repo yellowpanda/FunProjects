@@ -33,7 +33,7 @@ I choose `Raspberry PI OS (32bit)` and under advanced options I choose:
 
 It would have been nice if there was a command line interface for the Imager, but I would not find one that accepted the same information as the graphical user interface.
 
-# Back screen after reboot
+# Black screen after reboot
 
 The raspberry did turn on and showed the user interface. It did not connect to the wifi and after a reboot it never completed the boot process. It just showed a black screen with a blinking cursor. :( 
 
