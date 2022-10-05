@@ -12,4 +12,5 @@ winget install "Microsoft.WindowsTerminal"
 winget install "Git.Git"
 winget install "Microsoft.VisualStudioCode"
 winget install "Greenshot.Greenshot"
+winget install "Microsoft.DotNet.SDK.6"
 ```
