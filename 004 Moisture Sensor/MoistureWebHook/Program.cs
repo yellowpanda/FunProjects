@@ -18,6 +18,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapGet("/moistures", async () =>
+    {
+        return Results.Ok("Hi");
+    })
+    .WithName("GetMoistures")
+    .WithOpenApi();
+
+
 app.MapPost("/moistures", async (Message message) =>
 {
     logger.LogInformation("Data: "+message.data);
