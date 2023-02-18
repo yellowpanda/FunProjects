@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddApplicationInsightsTelemetry();
 var app = builder.Build();
 
 var logger = LoggerFactory.Create(config =>
@@ -20,7 +21,7 @@ app.UseHttpsRedirection();
 
 app.MapGet("/moistures", async () =>
     {
-        return Results.Ok("Hi ");
+        return Results.Ok("Hi");
     })
     .WithName("GetMoistures")
     .WithOpenApi();
