@@ -1,5 +1,6 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore.Http.HttpResults;
 
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
@@ -9,7 +10,6 @@ var logger = LoggerFactory.Create(config =>
     config.AddConsole();
 }).CreateLogger("Program");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -20,19 +20,25 @@ app.UseHttpsRedirection();
 
 app.MapGet("/moistures", async () =>
     {
-        return Results.Ok("Hi");
+        return Results.Ok("Hi ");
     })
     .WithName("GetMoistures")
     .WithOpenApi();
 
 
-app.MapPost("/moistures", async (Message message) =>
-{
-    logger.LogInformation("Data: "+message.data);
-    return Results.Created($"/moistures/", message);
-})
-.WithName("PostMoistures")
-.WithOpenApi();
+app.MapPost("/moistures", (Message message, string code, IConfiguration configuration) =>
+    {
+        string secret = (string)configuration["code"];
+        if (secret != code)
+        {
+            return Results.Unauthorized();
+        }
+
+        logger.LogInformation("Data: " + message.data);
+        return Results.Created($"/moistures/", message);
+    })
+    .WithName("PostMoistures")
+    .WithOpenApi();
 
 app.Run();
 
