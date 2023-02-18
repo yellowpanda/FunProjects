@@ -10,6 +10,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '004 Moisture Sensor/**'
   workflow_dispatch:
 
 jobs:
